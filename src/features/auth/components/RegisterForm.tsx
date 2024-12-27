@@ -69,7 +69,7 @@ export const RegisterForm = ({
             setError("Invalid Credentials");
             }).finally(() => {
                 setPending(false);
-                router.push("/")
+                router.push("/setup-account")
             });
     }
 
@@ -86,7 +86,7 @@ export const RegisterForm = ({
                             <Image src="/logo.svg" alt="Resender" width={32} height={32} />
                             <span className="sr-only">Resender</span>
                         </Link>
-                        <h1 className="text-xl font-bold">Welcome to Resender</h1>
+                        <h1 className="text-xl font-bold">Create your workspace</h1>
                         <div className="text-center text-sm">
                             Have an account?{" "}
                             <button onClick={() => setAuthState("login")} className="underline underline-offset-4">

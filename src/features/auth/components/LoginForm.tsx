@@ -74,7 +74,7 @@ export const LoginForm = ({
               <Image src="/logo.svg" alt="Resender" width={32} height={32} />
               <span className="sr-only">Resender</span>
             </Link>
-            <h1 className="text-xl font-bold">Welcome to Resender</h1>
+            <h1 className="text-xl font-bold">Login to Resender</h1>
             <div className="text-center text-sm">
               Don&apos;t have an account?{" "}
               <button onClick={() => setAuthState("register")} className="underline underline-offset-4">
