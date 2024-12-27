@@ -13,7 +13,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { DashboardAppSidebar } from "@/features/dashboard/DashboardAppSidebar"
+import { DashboardAppSidebar } from "@/features/dashboard/components/DashboardAppSidebar"
 
 export default function DashboardPage() {
   return (
