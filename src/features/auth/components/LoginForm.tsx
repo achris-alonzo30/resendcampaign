@@ -35,7 +35,10 @@ export const LoginForm = ({
 
   const useAuthProvider = (provider: "google" | "github") => {
     setPending(true);
-    signIn(provider).finally(() => setPending(false));
+    signIn(provider).finally(() => {
+      setPending(false)
+      router.push("/dashboard")
+    });
   }
 
   const useEmailPassword = (e: React.FormEvent<HTMLFormElement>) => {

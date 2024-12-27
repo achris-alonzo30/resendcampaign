@@ -49,7 +49,7 @@ export const ResendKeysForms = ({
           router.push("/dashboard");
         },
         onError: () => {
-          toast.error("Failed to add Resend keys");
+          toast.error("Invalid Resend API Key");
         }
       })
     } catch (error) {
@@ -73,7 +73,7 @@ export const ResendKeysForms = ({
                 <span className="sr-only">Resender</span>
               </Link>
               <h1 className="text-xl font-bold">Welcome to Resender</h1>
-              <p className="text-muted-foreground text-sm font-normal">Add your <Link href="https://resend.com/emails" className="underline underline-offset-4 text-[#2e90fa] font-bold hover:text-[#2e90fa]/80">Resend</Link> details to continue</p>
+              <p className="text-muted-foreground text-balance text-sm text-center font-normal">To continue you must have a <Link href="https://resend.com/emails" className="underline underline-offset-4 text-[#2e90fa] font-bold hover:text-[#2e90fa]/80">Resend</Link> account and add your details to continue</p>
             </div>
 
             {/* Login Form */}
@@ -90,6 +90,7 @@ export const ResendKeysForms = ({
                         {...field}
                         required
                         autoFocus
+                        type="password"
                         placeholder="re_123456789"
                       />
                     </FormControl>

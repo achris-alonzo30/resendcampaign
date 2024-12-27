@@ -17,6 +17,7 @@ import type * as auth from "../auth.js";
 import type * as http from "../http.js";
 import type * as resendKeys from "../resendKeys.js";
 import type * as users from "../users.js";
+import type * as verifyResendKeys from "../verifyResendKeys.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -31,6 +32,7 @@ declare const fullApi: ApiFromModules<{
   http: typeof http;
   resendKeys: typeof resendKeys;
   users: typeof users;
+  verifyResendKeys: typeof verifyResendKeys;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
