@@ -32,7 +32,7 @@ export const RegisterForm = ({
             </a>
             <h1 className="text-xl font-bold">Welcome to Acme Inc.</h1>
             <div className="text-center text-sm">
-              Don&apos;t have an account?{" "}
+              Have an account?{" "}
               <button onClick={() => setAuthState("login")} className="underline underline-offset-4">
                 Sign in
               </button>
