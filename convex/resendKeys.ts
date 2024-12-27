@@ -42,4 +42,17 @@ export const verified = query({
 
         return !!isVerified;
     }
+});
+
+export const getResendKeys = query({
+    args: {},
+    handler: async (ctx) => {
+        const userId = await getAuthUserId(ctx);
+
+        if (!userId) throw new Error("Unauthorized");
+
+        const resendKeys = await ctx.db.query("resendKeys").withIndex("by_user_id", (q) => q.eq("userId", userId)).unique();
+
+        return resendKeys;
+    }
 })
