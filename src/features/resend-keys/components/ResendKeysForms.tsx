@@ -14,11 +14,13 @@ import {
   FormField,
   FormLabel,
   FormControl,
-  FormMessage
+  FormMessage,
+  FormDescription
 } from "@/components/ui/form";
+import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { useAddResendKeys } from "../api/useAddResendKeys";
 
 
 interface ResendKeysFormProps {
@@ -31,12 +33,25 @@ export const ResendKeysForms = ({
 }: ResendKeysFormProps) => {
   const router = useRouter();
   const form = useResendKeysForm();
+  const { mutate } = useAddResendKeys();
 
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (data: z.infer<typeof ResendKeysSchema>) => {
     try {
-
+      await mutate({
+        resendApiKey: data.resendApiKey,
+        resendDomain: data.resendDomain,
+      }, {
+        onSuccess: () => {
+          form.reset();
+          toast.success("Resend keys added successfully");
+          router.push("/dashboard");
+        },
+        onError: () => {
+          toast.error("Failed to add Resend keys");
+        }
+      })
     } catch (error) {
 
     }
@@ -58,39 +73,61 @@ export const ResendKeysForms = ({
                 <span className="sr-only">Resender</span>
               </Link>
               <h1 className="text-xl font-bold">Welcome to Resender</h1>
-              <p className="text-muted-foreground text-sm">Add your <Link href="https://resend.com/emails" className="underline underline-offset-4 text-[#2e90fa] font-bold hover:text-[#2e90fa]/80">Resend</Link> details to continue</p>
+              <p className="text-muted-foreground text-sm font-normal">Add your <Link href="https://resend.com/emails" className="underline underline-offset-4 text-[#2e90fa] font-bold hover:text-[#2e90fa]/80">Resend</Link> details to continue</p>
             </div>
 
             {/* Login Form */}
             <div className="flex flex-col gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Resend API Key</Label>
-                <Input
-                  required
-                  autoFocus
-                  placeholder="re_123456789"
-
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="password">Resend Domain</Label>
-                <div className="relative">
-                  <Input
-                    required
-                    placeholder="support@resend.com"
-                  />
-                </div>
-              </div>
+              {/* Add a text button before they are able to submit */}
+              <FormField
+                control={form.control}
+                name="resendApiKey"
+                render={({ field }) => (
+                  <FormItem className="grid gap-1">
+                    <FormLabel>Resend API Key</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        required
+                        autoFocus
+                        placeholder="re_123456789"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+               <FormField
+                control={form.control}
+                name="resendDomain"
+                render={({ field }) => (
+                  <FormItem className="grid gap-1">
+                    <FormLabel>Resend Domain</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        required
+                        autoFocus
+                        placeholder="support@resend.com"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <Button
                 type="submit"
                 className="w-full"
+                disabled={isLoading}
               >
-                Continue
+                Verify to continue
               </Button>
             </div>
-
           </div>
         </form>
+        <p className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
+          Your Resend details will be securely stored and used only for sending your emails.
+        </p>
       </Form>
     </div>
   )
