@@ -1,8 +1,10 @@
-import { Button } from "@/components/ui/button"
-import { useAuthActions } from "@convex-dev/auth/react";
+import { Button } from "@/components/ui/button";
 
-export const AuthProviders = () => {
-    const { signIn } = useAuthActions();
+
+interface AuthProvidersProps {
+    useAuthProvider: (provider: "google" | "github") => void
+}
+export const AuthProviders = ({ useAuthProvider }: AuthProvidersProps) => {
     return (
         <>
             <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
@@ -15,7 +17,7 @@ export const AuthProviders = () => {
                     type="button"
                     variant="outline" 
                     className="w-full"
-                    onClick={() => void signIn("github")}
+                    onClick={() => useAuthProvider("github")}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path
@@ -29,7 +31,7 @@ export const AuthProviders = () => {
                     type="button"
                     variant="outline" 
                     className="w-full"
-                    onClick={() => void signIn("google")}
+                    onClick={() => useAuthProvider("google")}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path
