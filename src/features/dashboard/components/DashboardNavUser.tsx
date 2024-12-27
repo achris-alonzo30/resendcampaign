@@ -30,7 +30,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-export function DashboardNavUser({
+export const DashboardNavUser = ({
   user,
 }: {
   user: {
@@ -38,7 +38,7 @@ export function DashboardNavUser({
     email: string
     avatar: string
   }
-}) {
+}) => {
   const { isMobile } = useSidebar()
 
   return (

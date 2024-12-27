@@ -157,7 +157,7 @@ const data = {
   ],
 }
 
-export function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export const DashboardSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>

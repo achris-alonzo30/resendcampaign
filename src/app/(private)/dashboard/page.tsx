@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sidebar"
 import { DashboardSidebar } from "@/features/dashboard/components/DasboardSidebar"
 
-export default function Page() {
+export default function DashboardPage() {
   return (
     <SidebarProvider>
       <DashboardSidebar />

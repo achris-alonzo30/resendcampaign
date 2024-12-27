@@ -25,7 +25,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-export function DashboardNavProjects({
+export const DashboardNavProjects = ({
   projects,
 }: {
   projects: {
@@ -33,7 +33,7 @@ export function DashboardNavProjects({
     url: string
     icon: LucideIcon
   }[]
-}) {
+}) => {
   const { isMobile } = useSidebar()
 
   return (
