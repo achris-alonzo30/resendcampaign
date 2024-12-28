@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@auth/core": "0.37.0",
+    "@blocknote/core": "^0.22.0",
+    "@blocknote/mantine": "^0.22.0",
+    "@blocknote/react": "^0.22.0",
     "@convex-dev/auth": "^0.0.77",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-avatar": "^1.1.2",
