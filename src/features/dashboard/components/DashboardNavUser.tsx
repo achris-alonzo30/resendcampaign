@@ -1,7 +1,5 @@
 "use client"
 
-import { useAuthActions } from "@convex-dev/auth/react";
-
 import {
   BadgeCheck,
   Bell,
@@ -41,7 +39,6 @@ export const DashboardNavUser = ({
     avatar: string
   }
 }) => {
-  const { signOut } = useAuthActions();
   const { isMobile } = useSidebar()
 
   return (
@@ -51,7 +48,7 @@ export const DashboardNavUser = ({
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground md:h-8 md:p-0"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
@@ -105,7 +102,7 @@ export const DashboardNavUser = ({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => void signOut()}>
+            <DropdownMenuItem>
               <LogOut />
               Log out
             </DropdownMenuItem>
